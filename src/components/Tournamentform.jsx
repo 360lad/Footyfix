@@ -22,7 +22,7 @@ function Tournamentform({showModal,setShowModal}) {
   return (
 
     <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-      <div className="flex flex-col gap-[1em] bg-[#000] justify-center relative  border rounded min-w-[500px] p-[1em]">
+      <div className="flex flex-col gap-[1em] bg-[orange] justify-center relative  border rounded min-w-[500px] p-[1em]">
         <form >
         {/* onSubmit={handleCreate} */}
         <div className="flex items-center justify-around">

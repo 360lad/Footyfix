@@ -8,3 +8,6 @@ p{
 body{
     background-color: #000;
 }
+label{
+    color: red;
+}
