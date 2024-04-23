@@ -1,16 +1,14 @@
 // import { Children } from "react"
-import Nav from "../components/Nav"
-import Footer from "../components/Footer"
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
-function Layout({Children}){
-    return(
-        <div>
-            <Nav />
-<main>
-    {Children}
-</main>
-        <Footer/>
-        </div>
-    )
+function Layout({ Children }) {
+  return (
+    <div>
+      <Nav />
+      <main>{Children}</main>
+      <Footer />
+    </div>
+  );
 }
-export default Layout
+export default Layout;

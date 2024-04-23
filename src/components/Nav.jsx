@@ -3,9 +3,11 @@ function Nav(){
         <div>
         <div>
             <div>
-                <img src="footy-images/footy-logo.png" alt="logo" />
+            <img src="src/assets/footy-logo.png"></img>
             </div>
-            <div></div>
+            <div>
+            
+            </div>
             <div></div>
         </div>
         </div>
