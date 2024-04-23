@@ -1,4 +1,7 @@
+import Tournamentform from "./Tournamentform"
+
 function poolsform(){
+    const teams={}
     return(
         <div>
             <div>
