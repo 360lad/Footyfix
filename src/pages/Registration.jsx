@@ -1,6 +1,6 @@
 import Registrationhero from "../components/Registrationhero";
 import Tournamentform from "../components/Tournamentform";
-import poolsform from "../components/Poolsform";
+// import poolsform from "../components/Poolsform";
 import { useState } from "react";
 
 function Registration() {
@@ -11,7 +11,7 @@ function Registration() {
 
       {showModal && <Tournamentform showModal={showModal} setShowModal={setShowModal}/>}
 
-      <poolsform />
+      {/* <poolsform /> */}
     </div>
   );
 }

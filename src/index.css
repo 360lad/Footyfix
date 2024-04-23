@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+p{
+    color: white;
+}
+body{
+    background-color: #000;
+}

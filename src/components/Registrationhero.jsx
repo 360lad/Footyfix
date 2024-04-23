@@ -14,7 +14,7 @@ function Registrationhero({showModal,setShowModal}) {
         tournament login into the am existing tournament
       </p>
       <button className="bg-[#fff] text-[#000] p-[1em] m-[1em] border rounded justify-center" onClick={handleShowmodal}> <IoMdAdd />Create NewTournament </button>
-      <button className="bg-[#fff] text-[#000] p-[1em] m-[1em] border rounded">Existing tournament</button>
+    
       </div>
     
     </div>

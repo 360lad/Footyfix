@@ -37,7 +37,7 @@ function Tournamentform({showModal,setShowModal}) {
         <div className="w-full block"> 
         
             <textarea
-              className="outline-none block w-full text-[#000] rounded  w-[90%] mx-auto p-[1em]"
+              className="outline-none block  text-[#000] rounded  w-[90%] mx-auto p-[1em]"
               name="text"
               id=""
               cols="30"
