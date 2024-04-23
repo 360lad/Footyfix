@@ -1,9 +1,8 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-
-
-import Home from "../Pages/Home";
-import Layout from "../Pages/Layout";
-import Createtournament from "../Pages/Createtournament";
+import Home from "../pages/Home";
+import Layout from "../pages/Layout";
+import Registration from "../pages/Registration";
+import Createtournament from "../pages/Createtournament";
 function Router(){
     return(
        <BrowserRouter>
@@ -11,7 +10,8 @@ function Router(){
         <Route 
         path="/"
         element={<Layout><Home/></Layout>}/>
-        <Route path="/Createtournament"
+        <Route path="/registration" element={<Layout><Registration/></Layout>}/>
+        <Route path="/tournament"
         element={<Layout><Createtournament/></Layout>}/>
        </Routes>
        
