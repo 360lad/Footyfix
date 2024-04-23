@@ -9,6 +9,7 @@ function Tournamentform({showModal,setShowModal,handleSubmit}) {
     teamNames:"",
     teamNum:""
   })
+  
   const [error,setError]=useState(false);
     function cancelModal(){
         setShowModal(false)
@@ -17,7 +18,7 @@ function Tournamentform({showModal,setShowModal,handleSubmit}) {
 }
 function handleSubmit(e){
   e.preventDefault();
-  if(tournamentName.length==0||teamNames.length==0||teamNum.length==0){
+  if(formData.tournamentName.length==0||formData.teamNames.length==0||formData.teamNum.length==0){
           setError(true)
   }
 
@@ -48,23 +49,24 @@ function handleSubmit(e){
               cols="30"
               rows="10"
               placeholder="Enter the teams that are to participate and they are to be separated by a comma (,)"
-              onChange={e=>setFormData(prev=>({...prev, tournamentName:e.target.value}))}
+              onChange={e=>setFormData(prev=>({...prev, teamNames:e.target.value}))}
             ></textarea>
         
          
             
         </div>
-        {error&&formData.teamNum.length<=0?
+        {error&& formData.teamNum.length<=0?
             <h3 className="text-[red] h-[20px] text-center">Specify number of pools!!</h3> :""}
         <div className="flex items-center ">
           <input
-            className="  w-[90%] mx-auto outline-none rounded p-[1em] my-[1em]"
+            className="  w-[90%] mx-auto outline-none rounded p-[1em] my-[1em] text-[#000]"
             type="text"
             placeholder="Enter number of pools :"
             onChange={e=>setFormData(prev=>({...prev, teamNum:e.target.value}))}
           />
        
         </div>
+        
         <div className="flex items-center justify-center">
           <button className="bg-[#fff] text-[#000] py-[.5em] cursor-pointer px-[2em] rounded items-center justify-center" onClick={(e)=>handleSubmit(e)}>
             Create
