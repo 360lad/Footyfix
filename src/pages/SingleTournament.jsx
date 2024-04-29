@@ -33,6 +33,7 @@ export default function SingleTournament() {
                 return (
                   <div className="flex text-[1em] ">
                     <p className="text-white ">{teamName}</p>
+                    <div></div>
                     </div>
                 )
             })
