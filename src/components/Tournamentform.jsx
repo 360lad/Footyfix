@@ -1,7 +1,13 @@
 import {  useState } from "react";
 import { MdCancel } from "react-icons/md";
+
 import { db } from "../Firebase";
 import { collection, addDoc ,getDocs} from "firebase/firestore";
+
+
+
+
+
 
 
 function Tournamentform({ showModal, setShowModal, handleSubmit }) {
@@ -10,11 +16,27 @@ function Tournamentform({ showModal, setShowModal, handleSubmit }) {
     teamNames: [],
     teamNum: "",
   });
+  
+  // if( formData.tournamentName.length > 0 ||
+  //   formData.teamNames.length > 0 ||
+  //   formData.teamNum.length > 0){
+  //     setSucess(true)
+
+  //   }
+
+  // else if(formData.teamNames){
+
+  //   setTeamList((prev)=>[...prev])
+  // shuffle(teamList)
+  // }
+  //   else {
+
+  // }
+  
 
   const [error, setError] = useState(false);
   const [sucess, setSucess] = useState(false);
   const [teamList, setTeamList] = useState([]);
-
   function cancelModal() {
     setShowModal(false);
   }
@@ -42,21 +64,7 @@ function Tournamentform({ showModal, setShowModal, handleSubmit }) {
       }
     }
   }
-  // if( formData.tournamentName.length > 0 ||
-  //   formData.teamNames.length > 0 ||
-  //   formData.teamNum.length > 0){
-  //     setSucess(true)
-
-  //   }
-
-  // else if(formData.teamNames){
-
-  //   setTeamList((prev)=>[...prev])
-  // shuffle(teamList)
-  // }
-  //   else {
-
-  // }
+  
 
   function shuffle(array) {
     let currentIndex = array.length;
@@ -74,7 +82,18 @@ function Tournamentform({ showModal, setShowModal, handleSubmit }) {
       ];
     }
   }
+// import { useState } from "react";
 
+// function Tournamentform ({ showModal, setShowModal }) {
+
+//   const [tournamentName, setTournamentName] = useState("");
+//   const [teamNames, setTeamNames] = useState("");
+//   const [teamNum, setTeamNum] = useState("");
+//   function cancelModal() {
+//     setShowModal(false)
+   
+//   }
+  
 
 
   
@@ -82,7 +101,9 @@ function Tournamentform({ showModal, setShowModal, handleSubmit }) {
   return (
     <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
       <div className="flex flex-col gap-[1em] bg-[#000] justify-center relative  border rounded min-w-[500px] p-[1em]">
-        <form>
+        <form       
+                onChange={(e) => setTeamNames(e.target.value)}
+>
           <div className="flex items-center justify-around">
             <div className="w-full">
               {sucess ? (
@@ -130,7 +151,7 @@ function Tournamentform({ showModal, setShowModal, handleSubmit }) {
               ""
             )}
             <textarea
-              className="outline-none block  text-[#000] rounded  w-[90%] mx-auto p-[1em] my-[1em]"
+              className="outline-none block w-full text-[#000] rounded   mx-auto p-[1em]"
               name="text"
               id=""
               cols="30"
@@ -144,15 +165,8 @@ function Tournamentform({ showModal, setShowModal, handleSubmit }) {
               }
               value={formData.teamNames}
             ></textarea>
-          </div>
-          {error && formData.teamNum.length <= 0 ? (
-            <h3 className="text-[red] h-[20px] text-center">
-              Specify number of pools!!
-            </h3>
-          ) : (
-            ""
-          )}
-          <div className="flex items-center ">
+                          
+              <div className="flex items-center ">
             <input
               className="  w-[90%] mx-auto outline-none rounded p-[1em] my-[1em] text-[#000]"
               type="text"
@@ -163,7 +177,71 @@ function Tournamentform({ showModal, setShowModal, handleSubmit }) {
               value={formData.teamNum}
             />
           </div>
+          <label>
+              <h3>The Number of teams must be included</h3>
+            </label>
+          </div>
+          <div className="flex items-center justify-center">
+            <button className="bg-[#fff] text-[#000] py-[.5em] cursor-pointer px-[2em] rounded items-center justify-center">
+              Create
+            </button>
 
+          </div>
+
+
+        </form>
+      
+        
+         </div>
+
+         </div>
+);
+}
+
+export default Tournamentform;
+
+         
+
+
+  // return (
+    // <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+      // <div className="flex flex-col gap-[1em] bg-[#000] justify-center relative  border rounded min-w-[500px] p-[1em]">
+        // <form>
+        //   {/* onSubmit={handleCreate} */}
+        //   // <div className="flex items-center justify-around">
+        //     // <div className="w-full">
+        //       <input
+        //         onChange={(e) => setTournamentName(e.target.value)}
+        //         className="block w-[90%] mx-auto p-[1em]"
+        //         type="text"
+        //         placeholder="Tournament Name"
+        //       />
+        //       <label>
+        //         <h3>Tournament Name must be included</h3>
+        //       </label>
+        //     </div>
+        //     <div>
+        //       <MdCancel
+        //         className="absolute right-0 top-0 cursor-pointer  m-[.5em]"
+        //         size={20}
+        //         onClick={cancelModal}
+        //       />
+        //     </div>
+        //   </div>
+        //   <div className="w-full block">
+            
+        //   </div>
+        //   {error && formData.teamNum.length <= 0 ? (
+        //     <h3 className="text-[red] h-[20px] text-center">
+        //       Specify number of pools!!
+        //     </h3>
+        //   ) : (
+        //     ""
+        //   )}
+        
+{/* 
+          onChange={e=>setFormData(prev=>({...prev, teamNames:e.target.value}))}
+            </textarea>
           <div className="flex items-center justify-center">
             <button
               className="bg-[#fff] text-[#000] py-[.5em] cursor-pointer px-[2em] rounded items-center justify-center"
@@ -171,12 +249,35 @@ function Tournamentform({ showModal, setShowModal, handleSubmit }) {
             >
               Create
             </button>
-          </div>
-        </form>
-       
-      </div>
-    </div>
-  );
-}
+          </div> */}
+{/* 
 
-export default Tournamentform;
+        
+         
+           </form> 
+        </div>
+        {error&& formData.teamNum.length<=0?
+            <h3 className="text-[red] h-[20px] text-center">Specify number of pools!!</h3> :""}
+        <div className="flex items-center ">
+          <input
+            className="  w-[90%] mx-auto outline-none rounded p-[1em] my-[1em] text-[#000]"
+            type="text"
+            placeholder="Enter number of pools :"
+            onChange={e=>setFormData(prev=>({...prev, teamNum:e.target.value}))}
+          />
+       
+        </div>
+        
+        <div className="flex items-center justify-center">
+          <button className="bg-[#fff] text-[#000] py-[.5em] cursor-pointer px-[2em] rounded items-center justify-center" onClick={(e)=>handleSubmit(e)}>
+            Create
+          </button>
+        </div>
+
+              onChange={(e) => setTeamNames(e.target.value)}
+            </textarea>
+            <label>
+              <h3>Tournament Name must be included</h3> */}
+            // </label>
+          {/* </div> */}
+         

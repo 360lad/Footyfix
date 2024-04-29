@@ -2,7 +2,7 @@ import { IoMdAdd } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { db } from "../Firebase";
 import { useNavigate } from "react-router-dom";
-
+import Tournamentform from "./Tournamentform";
 import { collection, addDoc, getDocs,updateDoc } from "firebase/firestore";
 
 function Registrationhero({ showModal, setShowModal }) {
@@ -31,7 +31,7 @@ function Registrationhero({ showModal, setShowModal }) {
     navigate(path, options);
 
 
-    
+
   }
 
   
@@ -39,6 +39,10 @@ function Registrationhero({ showModal, setShowModal }) {
   return (
     <div className="container text-[white]">
       {console.log(tournaments)}
+
+      {
+        showModal && <Tournamentform/>
+      }
       <div>
         <h1 className="text-[white] text-[2em]">Welcome to Footyfix</h1>
         <p className="text-[white]">
