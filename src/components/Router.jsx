@@ -1,11 +1,13 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { useState } from "react";
+import Home from "../pages/Home";
+import Layout from "../pages/Layout";
+import Createtournament from "../pages/Createtournament";
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
+import Registration from "../pages/Registration"
 
 
-import Home from "../Pages/Home";
-import Layout from "../Pages/Layout";
-import Createtournament from "../Pages/Createtournament";
-import Login from "../Pages/Login";
-import SignUp from "../Pages/Sign-up";
 function Router(){
     return(
        <BrowserRouter>
@@ -13,10 +15,11 @@ function Router(){
         <Route 
         path="/"
         element={<Layout><Home/></Layout>}/>
-        <Route path="/Createtournament"
+        <Route path="/registration" element={<Layout><Registration/></Layout>}/>
+        <Route path="/tournament"
         element={<Layout><Createtournament/></Layout>}/>
-        <Route path="/Login"element={<Layout><Login/></Layout>}/>
-        <Route path="/Sign-up"element={<Layout><Sign-up/></Layout>}/>
+        <Route path="/login-page"element={<Layout><Login/></Layout>}/>
+        <Route path="/signup"element={<Layout><Signup/></Layout>}/>
        </Routes>
        
        
