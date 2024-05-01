@@ -60,13 +60,13 @@ function Registrationhero({ showModal, setShowModal }) {
       </div>
       <div className="border rounded min-h-[500px] min-w-[500px] m-[3em]">
         <h2 className="text-center underline font-bold text-[2em]">TOURNAMENTS</h2>
-
+{console.log(tournaments)}
         <div>
           {tournaments.length === 0 ? (
             <h3>No tournaments found</h3>
           ) : (
             tournaments.map((tournament) => {
-              const { tournamentName, teamNames, teamNum } = tournament.data;
+              const { tournamentName, teamNames, teamNum, groupings, assignedGroupMatches } = tournament.data;
               return (
                 <div className="flex  items-center justify-evenly flex-wrap m-[2em]">
 
@@ -74,7 +74,7 @@ function Registrationhero({ showModal, setShowModal }) {
                   className="cursor-pointer font-bold flex gap-[2em]"
                   onClick={() =>
                     handleTourrnament(`/tournaments/${tournamentName}`, {
-                      state: { tournamentName, teamNames, teamNum, id:tournament.id },
+                      state: { tournamentName, teamNames, teamNum, id:tournament.id, pools:groupings, matches:assignedGroupMatches},
                     })
                   }
                 >
