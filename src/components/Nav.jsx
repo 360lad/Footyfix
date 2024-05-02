@@ -1,5 +1,16 @@
 function Nav(){
     return(
+
+        <div>
+        <div>
+            <div>
+            
+            </div>
+            <div>
+            
+            </div>
+            <div></div>
+
         <div >
         <div className="flex items-center justify-around ">
             <div className=" w-[10%]">
@@ -22,7 +33,10 @@ function Nav(){
             <li>Sign up</li>
                 </ul>
             </div>
+
         </div>
+</div>
+</div>
         </div>
     )
 }

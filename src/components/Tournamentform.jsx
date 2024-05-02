@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdCancel } from "react-icons/md";
+// import { MdCancel } from "react-icons/md";
 
 
 function Tournamentform({showModal,setShowModal,handleSubmit}) {
@@ -24,46 +24,7 @@ function handleSubmit(e){
   }
 
     };
-  return (
-
-    <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-      <div className="flex flex-col gap-[1em] bg-[#000] justify-center relative  border rounded min-w-[500px] p-[1em]">
-        <form onSubmit={handleSubmit}>
-     
-        <div className="flex items-center justify-around">
-          <div className="w-full">
-          {error &&formData.tournamentName.length<=0 ?
-            <h3 className="text-[red] h-[20px] text-center">Enter Tournament Name!!</h3>:""}
-            <input className="block w-[90%] mx-auto p-[1em] text-[#000] my-[1em]" type="text" placeholder="Tournament Name"  onChange={e=>setFormData(prev=>({...prev, tournamentName:e.target.value}))}/>
-          </div>
-          <div>
-            <MdCancel className="absolute right-0 top-0 cursor-pointer  m-[.5em]" size={20} onClick={cancelModal} />
-          </div>
-        </div>
-        <div className="w-full block"> 
-        {error&&formData.teamNames.length<=0?
-              <h3 className="text-[red] h-[20px] text-center">Enter teams to participate!!</h3>:""}
-            <textarea
-              className="outline-none block  text-[#000] rounded  w-[90%] mx-auto p-[1em] my-[1em]"
-
-// import { useState } from "react";
-
-function Tournamentform({ showModal, setShowModal }) {
-  // const [error,setError]=useState(true)
-  // const validateInput=e=>{
-  // if(input.value===""){
-  //   setError(true)
-  // }
-  // }
-  const [tournamentName, setTournamentName] = useState("");
-  const [teamNames, setTeamNames] = useState("");
-  const [teamNum, setTeamNum] = useState("");
-  function cancelModal() {
-    setShowModal(false);
-    // const handleCreate=e=>{
-
-    // }
-  }
+  
   return (
     <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
       <div className="flex flex-col gap-[1em] bg-[#000] justify-center relative  border rounded min-w-[500px] p-[1em]">
@@ -91,7 +52,7 @@ function Tournamentform({ showModal, setShowModal }) {
           </div>
           <div className="w-full block">
             <textarea
-              className="outline-none block w-full text-[#000] rounded  w-[90%] mx-auto p-[1em]"
+              className="outline-none block  text-[#000] rounded  w-[90%] mx-auto p-[1em]"
               name="text"
               id=""
               cols="30"
@@ -121,9 +82,10 @@ function Tournamentform({ showModal, setShowModal }) {
             Create
           </button>
         </div>
+</form>
 
-              onChange={(e) => setTeamNames(e.target.value)}
-            ></textarea>
+        <textarea   onChange={(e) => setTeamNames(e.target.value)}>
+            </textarea>
             <label>
               <h3>Tournament Name must be included</h3>
             </label>
@@ -145,9 +107,10 @@ function Tournamentform({ showModal, setShowModal }) {
             </button>
           </div>
 
-        </form>
+        
       </div>
-    </div>
+    
+    
   );
 }
 

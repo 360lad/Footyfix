@@ -1,7 +1,13 @@
+import HeroSection from "../components/HeroSection"
+import Testimonials from "../components/Testimonials"
 function Home (){
     return(
         <div>
-            <p>Homepage</p>
+            <div>
+             <HeroSection/>  
+             <Testimonials/> 
+               
+            </div>
         </div>
     )
 }
