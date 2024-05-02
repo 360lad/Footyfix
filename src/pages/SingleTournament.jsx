@@ -111,23 +111,23 @@ export default function SingleTournament() {
       </h1>
 
       <h2 className="text-white text-center text-[2em]">Tournament Teams</h2>
-      <div className="flex items-center justify-center flex-wrap text-center text-[1em] border rounded w-[90%]">
+      <div className="flex items-center justify-center flex-wrap text-center text-[1em] border rounded w-[fit] m-[2em]">
         {teamNames &&
           teamNames.map((teamName) => {
             return (
               <div>
-                <p className="text-white p-[2em]">{teamName}</p>
+                <p className="text-white text-center p-[2em]">{teamName}</p>
               </div>
             );
           })}
       </div>
+        <h2 className="text-white text-center text-[2em]">Team Pools</h2>
       <div className="flex items-center justify-center flex-wrap gap-[1em]">
-        <h2>Team Pools</h2>
         <div className="flex items-center justify-center flex-wrap gap-[1em]">
           {teamPools &&
             teamPools.map((teamPool) => (
               <div>
-                <h3 className="text-white bold text-[1em]">Group {teamPool}</h3>
+                <h3 className="text-white text-center text-[1em]">Group {teamPool}</h3>
                 <div className="flex text-center justify-center w-[200px] h-[200px] text-black rounded p-[3em] bg-[#313131] ">
                   <div>
                     {pools[teamPool].map((item) => (
@@ -140,8 +140,8 @@ export default function SingleTournament() {
         </div>
       </div>
 
-      <h2 className="text-white text-center underline">Group fixtures</h2>
-      <div className="flex text-white">
+      <h2 className="text-white text-center text-[2em] m-[1em]">Group fixtures</h2>
+      <div className="flex items-center justify-center text-white">
         <div className="flex items-center justify-center flex-wrap text-white">
           {teams.map((team) => {
             console.log(team);
@@ -189,7 +189,7 @@ export default function SingleTournament() {
       </div>
 
       {showForm && (
-        <div className="  flex flex-col items-center justify-center  flex-wrap gap-[1em] p-[2em] absolute top-[20%] right-[50%] translate-x-[40%]	translate-y-[50%]	   border rounded bg-black text-white  ">
+        <div className="  flex flex-col items-center justify-center  flex-wrap gap-[1em] p-[2em] absolute top-[55vh] right-[50%] translate-x-[50%]	translate-y-[55vh]	   border rounded bg-black text-white  ">
           <div className="absolute top-[1%] right-[0%] p-[1em] cursor-pointer">
             <MdCancel size={20} onClick={() => setShowForm(false)} />
             {/* onClick={formCancellation()} */}

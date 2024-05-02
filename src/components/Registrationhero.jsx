@@ -37,14 +37,14 @@ function Registrationhero({ showModal, setShowModal }) {
   
   
   return (
-    <div className="container text-[white]">
+    <div className=" flex flex-col items-start justify-center flex-wrap container text-[white] m-[2em]">
       {console.log(tournaments)}
 
       {
         showModal && <Tournamentform/>
       }
-      <div>
-        <h1 className="text-[white] text-[2em]">Welcome to Footyfix</h1>
+      <div className=" ">
+        <h1 className="text-[white] text-[2em] ">Welcome to Footyfix</h1>
         <p className="text-[white]">
           Here you'll kindly create your tournament here .If you have an
           existing tournament login into the am existing tournament
@@ -58,8 +58,8 @@ function Registrationhero({ showModal, setShowModal }) {
           Create NewTournament{" "}
         </button>
       </div>
-      <div className="border rounded min-h-[500px] min-w-[500px] m-[3em]">
-        <h2 className="text-center underline font-bold text-[2em]">TOURNAMENTS</h2>
+      <div className="border rounded min-h-[500px] min-w-[500px] items-center">
+        <h2 className="text-center  font-bold text-[3em]">TOURNAMENTS</h2>
 {console.log(tournaments)}
         <div>
           {tournaments.length === 0 ? (
