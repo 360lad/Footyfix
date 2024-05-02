@@ -12,29 +12,3 @@ label{
     color: red;
     text-align: center;
 }
-@keyframes slideFromLeft {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideFromRight {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-
-.slide-left {
-    animation: slideFromLeft 1s ease-out forwards;
-}
-
-.slide-right {
-    animation: slideFromRight 1s ease-out forwards;
-}

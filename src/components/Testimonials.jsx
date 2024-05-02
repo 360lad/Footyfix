@@ -6,7 +6,7 @@ function Testimonials() {
   return (
     <div>
       <div className="container mx-auto">
-        <h1 className="text-center font-bold font-sans text-2xl text-white mt-24 mt-4">
+        <h1 className="text-center font-bold font-sans text-2xl text-white  mt-4">
           Testimonials
         </h1>
         <div>
