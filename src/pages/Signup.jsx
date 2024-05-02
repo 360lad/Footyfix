@@ -1,172 +1,178 @@
+// import React,{useState} from "react"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../Firebase";
+import { collection, addDoc } from "firebase/firestore";
+import React, { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { IoLogoFacebook } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
-import { useState } from "react";
-import { FaRegEye } from "react-icons/fa";
-// import { createUserWithEmailAndPassword} from "firebase/auth";
-// import { auth,db} from "../Firebase";/
-// import { collection,addDoc } from "firebase/firestore";
-import { FcGoogle } from "react-icons/fc"; 
-import { IoLogoFacebook } from "react-icons/io5";
-import { FaRegEyeSlash } from "react-icons/fa";
-function Signup(){
-  const [showPassword ,setShowPassword]=useState(true)
-  function handleShowPassword(){<div className="bg-gray-200 w-[100px] h-[80px] justify-center flex flex-wrap items-center "></div>
-    setShowPassword(prev=>!prev)
-  }
-  const [formInput, setPassword] = useState({
-    emailAddress:"",
-    password:"",
-    phoneNumber:"",
-    });
-    const [errorMessage,setErrorMessage] = useState("");
+function Signup() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
+  const handleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
 
-    function handleInputChange(e) {
-      setFormInput({ ...formInput,[e.target.name]:e.target.value})
-    }
-    function handleSignUp(){
-      console.log(password);
-      if (formInput.emailAddress === ""){
-        setErrorMessage("Kindly fill in the emailAddress");
-      }else if (formInput.password === ""){
-        setErrorMessage("Kindly fill in the password");
-      }else if (formInput.password.length < 8){
-        setShowPassword("password  should have a  minimum & maximum of 8 characters ")
-      }
-    else if (formInput.phoneNumber.length<10){
-        setErrorMessage("phone number should have a minimum & maximum of 10 characters");
-      } else {setErrorMessage("");
-    createUserWithEmailAndPassword(auth,
-      formInput.emailAddress,
-      formInput.password
-      )
-      .then(async (useerData) => {
-        const user = userData.user;
-        console.log(user);
+  const navigate = useNavigate();
+  const [FormData, setFormData] = useState({
+    emailAddress: "",
+    password: "",
+    phoneNumber: "",
+  });
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (e) => {
+      setFormData({ ...FormData, [e.target.name]: e.target.value });
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    if(FormData.emailAddress=== "") {
+      setErrorMessage("Please fill in your email address");
+      return;
+    } else if (FormData.password=== "") {
+      setErrorMessage("Please fill in your password");
+      return;
+    } else if (FormData.password.length < 8) {
+      setErrorMessage("Password must be at least 8 characters long");
+      return;
+    } else if (FormData.phoneNumber=== "") {
+      setErrorMessage("Please fill in your phone number");
+      return;
+    } else if (FormData.phoneNumber.length < 10) {
+      setErrorMessage("Phone number must be at least 10 characters long");
+      return;
+    } else {
+      setErrorMessage("");
+      try {
+        const userCredential = await  createUserWithEmailAndPassword(
+          auth,
+          FormData.emailAddress,
+          FormData.password
+        );
+        const user = userCredential.user;
+        console.log(userCredential  );
         if (user) {
-          const newUser = await addDoc(collection(db, "users"),formInput);
-          console.log(newUser);
+          const details = await addDoc(collection(db, " "), FormData);
+          navigate("/login");
+
+          console.log(details);
         }
-      })
-      .catch((error) => console.log(error));
+
+        // alert("Successfully Registered");
+      } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(error.code, error.message);
+      }
     }
-    }
-    return(
-       
-      
-  
-  
-    
+  };
+
+  return (
+    <div>
+      <div className="container mx-auto  flex  gap-20">
         <div>
-          <div className="container mx-auto  flex  gap-20">
-            <div>
-           <div className="flex gap-100  ">
+          <div className="flex gap-100  ">
             <div className="text-white w-[400px] font-sans font-small text-6xl ">
-            <h1 >Sports Tournament 2024</h1>
+              <h1>Sports Tournament 2024</h1>
             </div>
-        <div className="w-[300px]  border-none">
-            <img src="src/assets/footy-images/FreeVector-Football.jpg" />
-            
+            <div className="w-[300px]  border-none">
+              <img src="src/assets/footy-images/FreeVector-Football.jpg" />
             </div>
-           </div>
-           <div className="flex gap-10 mt-20 ">
+          </div>
+          <div className="flex gap-10 mt-20 ">
             <div className="w-[200px]">
-              <img src="src/assets/footy-images/cup-gold.jpeg"/>
-             
+              <img src="src/assets/footy-images/cup-gold.jpeg" />
             </div>
             <div className="w-[200px] ">
-              <img src="src/assets/footy-images/silver.jpeg"  />
-             
+              <img src="src/assets/footy-images/silver.jpeg" />
             </div>
             <div className="w-[200px]">
               <img src="src/assets/footy-images/silverplastic.jpeg" />
             </div>
-           </div>
-       </div>
-       <div>
-           <div>
-            <h2 className="text-center font-bold font-sans text-2xl text-white">
-              Create an Account            </h2>
-          </div>
-          <div className="flex">
-          <div className="text-2xl mt-10 border border-none border-gray-400 py-4 px-30   flex items-center gap-6 text-blue-800 justify-center">
-            <FcGoogle size={40}/>
-            <p>Sign Up With Google</p>
-          </div>
-          <div className="text-2xl mt-10 border border-gray-400 py-4 px-20 border-none   flex items-center gap-6 text-blue-800 justify-center">
-          <IoLogoFacebook  size={40}/>
-                        <p>Sign Up With Google</p>
-          </div>
-          </div>
-          <div className="flex gap-3 items-center mt-10">
-            <div className="border-b-2 border-gray-700 w-[300px]"></div>
-            <div className="text-white">or</div>
-            <div className="border-b-2 border-gray-700 w-[300px]"></div>
-          </div>
-          <div>
-            <input
-              className=" mt-8 border border-white-500 py-8 px-[10em] rounded-full text-gray"
-              type="text"
-              placeholder="Email Address "
-              name="emailAddress"
-              onChange={handleInputChange}
-            ></input>
-          </div>
-          <div>
-            <input
-              className=" mt-8 border border-white-500 py-8 px-[10em] rounded-full text-gray"
-              type="text"
-              placeholder="Phone Number "
-              name="phoneNumber"
-              onChange={handleInputChange}
-            ></input>
-          </div>
-          <div className="bg-white mt-8 border border-black-500 py-8 w-[570px] rounded-full text-gray gap-10 flex items-center justify-between ">
-            <input className="outline-none"
-              
-              type={showPassword?"password":"text"}
-              placeholder="Password "
-              name="password"
-              onChange={handleInputChange}
-            />
-            <div className="pr-3 cursor-pointer" onClick={handleShowPassword}>{showPassword?<FaRegEyeSlash />:<FaRegEye />}
-              
-            </div>
-          </div>
-          <div className="flex  justify-between items-center ">
-            <div className="flex items-center gap-10 mt-5 ">
-              <input type="checkbox" />
-              <p>Remember Me</p>
-            </div>
-            <div>
-              <p className="mt-10 text-white  ">Forgot Password?</p>
-            </div>
-          </div>
-          <div className="items-center">
-            <button
-              className=" mt-10 border border-white-500 py-2 px-[5em]  rounded-full square  items-center text-white font-bold text-2xl " onChange={handleInputChange} >Create Account</button>
-          </div>
-          
-          
-          
-          <div>
-            <p className="font-sans text-2xl text-center mt-10 gap-5">
-              Dont Have An Account Yet?
-              <span className="text-[#6645c9] gap-5 ">Sign Up Free</span>{" "}
-            </p>
           </div>
         </div>
+        <div>
+          <div>
+            <div className="shadow-lg border border-white-100">
+              <h2 className="text-center font-bold font-sans text-2xl text-white">
+                Create an Account
+              </h2>
+              <div className="flex justify-center mt-4">
+                <button
+                  className="border border-white-500 py-2 px-4 rounded-full text-white bg-transparent"
+                  onClick={() => console.log("Sign Up with Google")}
+                >
+                  <FcGoogle size={24} />
+                  <span>Sign Up With Google</span>
+                </button>
+                <button
+                  className="border border-gray-500 py-2 px-4 rounded-full text-white bg-transparent ml-4"
+                  onClick={() => console.log("Sign Up with Facebook")}
+                >
+                  <IoLogoFacebook size={24} />
+                  <span>Sign Up With Facebook</span>
+                </button>
+              </div>
+              <div className="flex justify-center items-center mt-4">
+                <div className="border-b-2 border-gray-700 w-1/4"></div>
+                <div className="text-white mx-4">or</div>
+                <div className="border-b-2 border-gray-700 w-1/4"></div>
+              </div>
+              <div className="flex flex-col items-center mt-4">
+                <input
+                  className="mt-4 py-6 px-8 border border-gray-400  w-[600px] flex justify-between items-center rounded-2xl"
+                  type="text"
+                  placeholder="Email Address"
+                  name="emailAddress"
+                  // value={FormData.emailAddress}
+                  onChange={handleChange}
+                />
+                <div className="">
+                  <input
+                    className="mt-6 py-6 px-8 border border-gray-400  w-[600px] flex justify-between items-center rounded-2xl"
+                    type="text"
+                    placeholder="Phone Number"
+                    name="phoneNumber"
+                    // value={FormData.phoneNumber}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className=" mt-6 border   border-gray-400 w-[600px] flex justify-between items-center rounded-2xl">
+                  <input
+                    className="text-1xl py-5 px-5 flex-1 "
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    name="password"
+                    // value={FormDatea.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div
+                  className="pr-3 cursor-pointer text-white mb-4"
+                  onClick={handleShowPassword}
+                >
+                  {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                </div>
+                
+                <button
+                  className=" mt-6 border border-white-500 py-2 px-4 rounded-full text-white bg-transparent"
+                  onClick={handleSignUp}
+                >
+                  Create Account
+                </button>
+                {errorMessage && (
+                  <p className="text-red-500 mt-2">{errorMessage}</p>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-    
+      </div>
+    </div>
+  );
+}
 
-
-  
-    
-   
-
-     
-      
-      
-        
-    )
-      }
-export default Signup  
+export default Signup;

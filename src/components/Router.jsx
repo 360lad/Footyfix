@@ -5,8 +5,7 @@ import Layout from "../pages/Layout";
 import Createtournament from "../pages/Createtournament";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import Registration from "../pages/Registration"
-
+import Registration from "../pages/Registration";
 
 function Router(){
     return(
@@ -20,6 +19,7 @@ function Router(){
         element={<Layout><Createtournament/></Layout>}/>
         <Route path="/login-page"element={<Layout><Login/></Layout>}/>
         <Route path="/signup"element={<Layout><Signup/></Layout>}/>
+       
        </Routes>
        
        
