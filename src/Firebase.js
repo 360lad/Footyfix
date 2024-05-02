@@ -1,5 +1,5 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+
 import {getFirestore} from "firebase/firestore"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -7,6 +7,12 @@ import {getFirestore} from "firebase/firestore"
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
+
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+const firebaseConfig = {
+  
     apiKey: "AIzaSyAciO97z_YBJ2rAocJJN-idL1LlvMXUSzo",
     authDomain: "footyfix-80fcd.firebaseapp.com",
     projectId: "footyfix-80fcd",
@@ -15,6 +21,15 @@ const firebaseConfig = {
     appId: "1:197169873988:web:35c749935f80d0e5d8a811"
   };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+// V1SkABbmztgk0c51OPEjM4IndFc2
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+ export const auth = getAuth(app);
+ export const db = getFirestore(app);
+// const analytics = getAnalytics(app);
+export default app;

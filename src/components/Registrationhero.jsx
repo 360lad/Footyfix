@@ -1,9 +1,13 @@
+
 import { IoMdAdd } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { db } from "../Firebase";
 import { useNavigate } from "react-router-dom";
 import Tournamentform from "./Tournamentform";
 import { collection, addDoc, getDocs,updateDoc } from "firebase/firestore";
+
+// import { IoMdAdd } from "react-icons/io";
+
 
 function Registrationhero({ showModal, setShowModal }) {
   const [tournaments, setTournaments] = useState([]);
