@@ -72,9 +72,9 @@ function Signup() {
 
   return (
     <div>
-      <div className="container mx-auto  flex  gap-20">
-        <div>
-          <div className="flex gap-100  ">
+      <div className="container mx-auto  flex flex-wrap m-[2em]">
+        <div className="m-[2em]">
+          <div className="flex items-center">
             <div className="text-white w-[400px] font-sans font-small text-6xl ">
               <h1>Sports Tournament 2024</h1>
             </div>
@@ -94,36 +94,16 @@ function Signup() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="m-[2em]">
           <div>
-            <div className="shadow-lg border border-white-100">
+            <div className="shadow-lg border rounded p-[2em]">
               <h2 className="text-center font-bold font-sans text-2xl text-white">
                 Create an Account
               </h2>
-              <div className="flex justify-center mt-4">
-                <button
-                  className="border border-white-500 py-2 px-4 rounded-full text-white bg-transparent"
-                  onClick={() => console.log("Sign Up with Google")}
-                >
-                  <FcGoogle size={24} />
-                  <span>Sign Up With Google</span>
-                </button>
-                <button
-                  className="border border-gray-500 py-2 px-4 rounded-full text-white bg-transparent ml-4"
-                  onClick={() => console.log("Sign Up with Facebook")}
-                >
-                  <IoLogoFacebook size={24} />
-                  <span>Sign Up With Facebook</span>
-                </button>
-              </div>
-              <div className="flex justify-center items-center mt-4">
-                <div className="border-b-2 border-gray-700 w-1/4"></div>
-                <div className="text-white mx-4">or</div>
-                <div className="border-b-2 border-gray-700 w-1/4"></div>
-              </div>
+             
               <div className="flex flex-col items-center mt-4">
                 <input
-                  className="mt-4 py-6 px-8 border border-gray-400  w-[600px] flex justify-between items-center rounded-2xl"
+                  className="mt-4 p-[1em] border border-gray-400  flex justify-between items-center rounded outline-none"
                   type="text"
                   placeholder="Email Address"
                   name="emailAddress"
@@ -132,7 +112,7 @@ function Signup() {
                 />
                 <div className="">
                   <input
-                    className="mt-6 py-6 px-8 border border-gray-400  w-[600px] flex justify-between items-center rounded-2xl"
+                    className="mt-6 p-[1em] border border-gray-400   flex justify-between items-center rounded outline-none"
                     type="text"
                     placeholder="Phone Number"
                     name="phoneNumber"
@@ -140,9 +120,10 @@ function Signup() {
                     onChange={handleChange}
                   />
                 </div>
-                <div className=" mt-6 border   border-gray-400 w-[600px] flex justify-between items-center rounded-2xl">
+                <div className="flex items-center justify-center">
+                <div className=" mt-6 border  rounded outline-none    flex  items-center justify-center ">
                   <input
-                    className="text-1xl py-5 px-5 flex-1 "
+                    className="text-1xl p-[1em] flex-1 "
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     name="password"
@@ -151,11 +132,15 @@ function Signup() {
                   />
                 </div>
                 <div
-                  className="pr-3 cursor-pointer text-white mb-4"
+                  className="pr-3 cursor-pointer text-white m-[.5em]"
                   onClick={handleShowPassword}
                 >
                   {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                 </div>
+                </div>
+                {errorMessage && (
+                  <p className="text-red-500 mt-2">{errorMessage}</p>
+                )}
                 
                 <button
                   className=" mt-6 border border-white-500 py-2 px-4 rounded-full text-white bg-transparent"
@@ -163,9 +148,7 @@ function Signup() {
                 >
                   Create Account
                 </button>
-                {errorMessage && (
-                  <p className="text-red-500 mt-2">{errorMessage}</p>
-                )}
+               
               </div>
             </div>
           </div>

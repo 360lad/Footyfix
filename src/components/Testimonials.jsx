@@ -32,7 +32,7 @@ Staff welcome and managers briefing was excellent."
                the Insightful Player initiative." 
             />
           </div>
-          <div></div>
+        
         </div>
       </div>
     </div>

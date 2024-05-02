@@ -4,7 +4,7 @@
 function Footer(){
     return(
         <div>
-        <footer className="flex items-center justify-evenly text-[white]">
+        <footer className="flex items-center justify-evenly text-[white] m-[2em] border-t-2 p-[2em]">
             <div>
                 <h2>Quick links</h2>
                 <ul>

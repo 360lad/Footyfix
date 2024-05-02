@@ -85,9 +85,11 @@ function Registrationhero({ showModal, setShowModal }) {
                   {tournamentName}
                 </h3>
                 </div>
+              
               );
+              console.log(pools)
             })
-          )}
+            )}
         </div>
       </div>
     </div>

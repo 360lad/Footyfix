@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../Firebase";
 import { collection, addDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +59,7 @@ function Login() {
   };
   return (
     <div>
-      <div className="container mx-auto  flex  justify-between  flex-wrap">
+      <div className="container mx-auto  flex m-[3em] gap-[2em] flex-wrap">
         <div className="flex flex-col mt-10">
           <div className="flex  gap-5 mt-8 ">
             <div className="bg-gray-200 w-[100px] h-[80px] justify-center flex flex-wrap items-center  text-5xl">
@@ -121,31 +122,31 @@ function Login() {
           </div>
         </div>
         <div>
-        <div className="flex-wrap">
+        <div className="m-[1em]" >
       <h2 className="text-center font-bold font-sans text-2xl text-white">
         Login To Your Account
       </h2><div className="shadow-md border border-white-100 p-8 rounded-lg">
 
   <form onSubmit={handleSubmit} className="flex flex-col items-center">
     <input
-      className="mt-4 border w-[80%] p-4 mb-4 rounded-lg"
+      className="mt-4 border  p-[1em] mb-4 rounded outline-none"
       type="text"
       placeholder="Email Address"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
     />
     {errors.email && <p className="text-red-500">{errors.email}</p>}
-    <div className="relative">
+    <div className=" flex items-center">
       <input
         type={showPassword ? "text" : "password"}
         placeholder="Password"
-        className="mt-4 border w-[110%] p-4 pr-18 rounded-lg"
+        className="mt-4 border outline-none rounded p-[1em]"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <div className="absolute inset-y-0 right-10 flex items-center pr-3 cursor-pointer" onClick={handleShowPassword}>
+      <div className="  flex items-center  cursor-pointer text-white m-[.2em]" onClick={handleShowPassword}>
         {showPassword ? <FaRegEyeSlash   
-      /> : <FaRegEye  className="text-black" />}
+      /> : <FaRegEye  className="text-white" />}
       </div>
     </div>
     {errors.password && <p className="text-red-500">{errors.password}</p>}
@@ -157,27 +158,29 @@ function Login() {
       <p className="text-[#6645c9]">Forgot Password?</p>
     </div>
     <div className="flex justify-center">
+      <Link to="/">
       <button 
         type="submit"
-        className="text-2xl border border-gray-400 py-4 px-6 rounded-full gap-6 text-[#6645c9] text-decoration-color-white flex items-center"
+        className="text-1xl border border-gray-400 py-[1em] px-[2em] m-[1em] rounded-full  text-[#6645c9] text-decoration-color-white flex items-center"
       >
         Sign In
       </button>
+      </Link>
     </div>
   </form>
 
-  <div className="flex gap-3 items-center mt-6">
+  <div className="flex gap-3 items-center justify-center mt-6">
     <div className="border-b-2 border-gray-700 w-1/3"></div>
     <div className="text-white">or</div>
     <div className="border-b-2 border-gray-700 w-1/3"></div>
   </div>
 
-  <div className="mt-4 border w-[80%] p-4 rounded-lg flex items-center">
+  <div className="mt-4 border  p-4 rounded flex items-center">
     <FcGoogle size={24} />
-    <p className="ml-2">Sign Up With Google</p>
+    <p className="ml-2">Sign In With Google</p>
   </div>
 
-  <p className="font-sans text-2xl text-center mt-6">
+  <p className=" text- text-center mt-6">
     Don't Have An Account Yet? <span className="text-[#6645c9]">Sign Up Free</span>
   </p>
 </div>

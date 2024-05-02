@@ -24,7 +24,7 @@ function Router(){
 
         <Route path="/tournaments/:id" element={<SingleTournament/>}/>
 
-        <Route path="/login-page"element={<Layout><Login/></Layout>}/>
+        <Route path="/login"element={<Layout><Login/></Layout>}/>
         <Route path="/signup"element={<Layout><Signup/></Layout>}/>
        
 

@@ -4,11 +4,14 @@ import { db } from "../Firebase";
 import { MdCancel } from "react-icons/md";
 import { useState } from "react";
 import Tournamentform from "../components/Tournamentform";
+import Registrationhero from "../components/Registrationhero";
 
 export default function SingleTournament() {
   const { state } = useLocation();
 
   const { tournamentName, teamNames, teamNum, id, pools, matches } = state;
+  // console.log(pools||{})
+  
   const teamPools = Object.keys(pools);
   const teams = Object.keys(matches).sort();
 
