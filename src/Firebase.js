@@ -1,4 +1,13 @@
 import { initializeApp } from "firebase/app";
+
+import {getFirestore} from "firebase/firestore"
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+
+const firebaseConfig = {
+
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
@@ -11,6 +20,12 @@ const firebaseConfig = {
     messagingSenderId: "197169873988",
     appId: "1:197169873988:web:35c749935f80d0e5d8a811"
   };
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+
 // V1SkABbmztgk0c51OPEjM4IndFc2
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
