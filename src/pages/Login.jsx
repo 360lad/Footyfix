@@ -139,12 +139,13 @@ function Login() {
       <input
         type={showPassword ? "text" : "password"}
         placeholder="Password"
-        className="mt-4 border w-[80%] p-4 pr-12 rounded-lg"
+        className="mt-4 border w-[110%] p-4 pr-18 rounded-lg"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <div className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onClick={handleShowPassword}>
-        {showPassword ? <FaRegEyeSlash className="text-white" /> : <FaRegEye  className="text-black" />}
+      <div className="absolute inset-y-0 right-10 flex items-center pr-3 cursor-pointer" onClick={handleShowPassword}>
+        {showPassword ? <FaRegEyeSlash   
+      /> : <FaRegEye  className="text-black" />}
       </div>
     </div>
     {errors.password && <p className="text-red-500">{errors.password}</p>}
